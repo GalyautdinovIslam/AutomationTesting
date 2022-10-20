@@ -2,3 +2,5 @@
 **/target/
 **/build/
 *.class
+
+resources/vk.data

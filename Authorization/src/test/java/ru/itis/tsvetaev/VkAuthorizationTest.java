@@ -26,7 +26,7 @@ public class VkAuthorizationTest {
     }
 
     @Test
-    public void testUntitledTestCase() throws Exception {
+    public void authorizationTestCase() throws Exception {
         // Открывает сайт vk.com
         driver.get("https://vk.com/");
 
@@ -34,14 +34,15 @@ public class VkAuthorizationTest {
         driver.findElement(By.id("index_email")).click();
         driver.findElement(By.id("index_email")).clear();
         driver.findElement(By.id("index_email")).sendKeys(VK_LOGIN);
-        driver.findElement(By.xpath("//div[@id='index_login']/div/form/button/span/span")).click();
+        driver.findElement(By.xpath("//div[@id='index_login']/div/form/button")).click();
 
         // Ждём загрузки окна
         Thread.sleep(3000);
+
         // Отчищаем поле ввода пароля, вводим свой пароль и нажимаем на кнопку
         driver.findElement(By.name("password")).clear();
         driver.findElement(By.name("password")).sendKeys(VK_PASSWORD);
-        driver.findElement(By.xpath("//div[@id='root']/div/div/div/div/div[2]/div/div/form/div[2]/button/span/span/span")).click();
+        driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div/div/div/div/div/form/div[2]/button")).click();
 
         // Ждём завершения авторизации (для наглядной видимости)
         Thread.sleep(20000);

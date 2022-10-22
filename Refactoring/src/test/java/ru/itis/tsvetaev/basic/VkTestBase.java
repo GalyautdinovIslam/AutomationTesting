@@ -4,9 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import ru.itis.tsvetaev.data.PostData;
 import ru.itis.tsvetaev.data.UserData;
 
@@ -52,37 +53,33 @@ public class VkTestBase {
     }
 
     /**
-     * Открытие сайта vk.com
+     * Открытие сайта vk.com и нажатие клавиши Escape
+     *
+     * @throws InterruptedException Если данный поток был прерван во время ожидания загрузки vk.com
      */
-    protected void openVkPage() {
+    protected void openVkPage() throws InterruptedException {
         driver.get("https://vk.com/");
+        sleep(3);
+        sendEscapeKey();
     }
 
     /**
-     * Открытие профиля авторизированного пользователя
+     * Открытие профиля авторизированного пользователя и нажатие клавиши Escape
      *
-     * @throws InterruptedException Если данный поток был прерван во время поиска "крестика" у всплывающего окна
+     * @throws InterruptedException Если данный поток был прерван во время ожидания загрузки страницы пользователя
      */
     protected void openProfilePage() throws InterruptedException {
         openVkPage();
         driver.findElement(By.xpath("//li[@id='l_pr']/a")).click();
-        try {
-            driver.findElement(By.xpath("//*[@id=\"box_layer\"]/div[2]/div/div[1]/div[1]")).click();
-            sleep(2);
-        } catch (NoSuchElementException ignored) {
-        }
-        try {
-            driver.findElement(By.xpath("//*[@class=\"box_x_button\"]")).click();
-            sleep(2);
-        } catch (NoSuchElementException ignored) {
-        }
+        sleep(3);
+        sendEscapeKey();
     }
 
     /**
      * Авторизация пользователя на сайте vk.com
      *
      * @param user Класс, хранящий в себе логин и пароль пользователя
-     * @throws InterruptedException Если данный поток был прерван во время ожидания загрузки окна ввода пароля
+     * @throws InterruptedException Если данный поток был прерван во время ожидания загрузки страниц ввода пароля или новостей
      */
     protected void login(UserData user) throws InterruptedException {
         driver.findElement(By.id("index_email")).click();
@@ -95,6 +92,8 @@ public class VkTestBase {
         driver.findElement(By.name("password")).clear();
         driver.findElement(By.name("password")).sendKeys(user.password());
         driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div/div/div/div/div/form/div[2]/button")).click();
+
+        sleep(3);
     }
 
     /**
@@ -107,5 +106,12 @@ public class VkTestBase {
         driver.findElement(By.id("post_field")).clear();
         driver.findElement(By.id("post_field")).sendKeys(post.content());
         driver.findElement(By.xpath("//button[@id='send_post']")).click();
+    }
+
+    /**
+     * Производит нажатие и отжатие клавиши Escape
+     */
+    private void sendEscapeKey() {
+        new Actions(driver).sendKeys(Keys.ESCAPE).perform();
     }
 }

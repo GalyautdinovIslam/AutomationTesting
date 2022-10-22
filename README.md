@@ -19,24 +19,26 @@
 
 ## Before
 
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before)**
+
 ### *(Делайте самостоятельно)*
 
 **Домашние задания перед автоматизированным тестированием**
 
 Схема: ***N. \[с/M (+a)\] T***, где:
 
-- N — Номер домашнего задания;
-- c — Полученный балл;
-- M — Максимально возможный балл;
-- a — Количество полученных доп. баллов;
-- T — Название домашнего задания.
+- **N** — Номер домашнего задания;
+- **c** — Полученный балл;
+- **M** — Максимально возможный балл;
+- **a** — Количество полученных доп. баллов;
+- **T** — Название домашнего задания.
 
-1. \[4/4 (+0)\] Нахождение багов в игре **dullrace2**.
-2. \[?/7 (+?)\] Сценарии терминала в **XMind**.
-3. \[?/6 (+?)\] **Тест-кейсы** по сценариям терминала.
-4. \[?/6 (+?)\] **Классы эквивалентности** калькулятора кредитов.
-5. \[?/6 (+?)\] **Баг-репорты** на приложение **ListBoxer**.
-6. \[?/4 (+?)\] **XMind**-схема приложения **Text Filter (dumb)** с **баг-репортами**.
+1. [\[4/4 (+0)\] Нахождение багов в игре **dullrace2**.](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before/1.%20Dullrace2)
+2. [\[?/7 (+?)\] Сценарии терминала в **XMind**.](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before/2.%20XMind)
+3. [\[?/6 (+?)\] **Тест-кейсы** по сценариям терминала.](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before/3.%20Test%20cases)
+4. [\[?/6 (+?)\] **Классы эквивалентности** калькулятора кредитов.](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before/4.%20Equivalence%20classes)
+5. [\[?/6 (+?)\] **Баг-репорты** на приложение **ListBoxer**.](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before/5.%20ListBoxer)
+6. [\[?/4 (+?)\] **XMind**-схема приложения **Text Filter (dumb)** с **баг-репортами**.](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Before/6.%20Text%20Filter%20(dumb))
 
 **[<Содержание>](#содержание)**
 
@@ -108,11 +110,23 @@ driver = new ChromeDriver(options);
 3. `none` — Selenium "готов", когда исходное содержимое страницы полностью получено.
    Загружен HTML-контент.
 
+### Имитирование нажатия клавиши без привязки к WebElement'у
+
+Пример отправки клавиши **Escape**:
+
+```
+new Actions(driver).sendKeys(Keys.ESCAPE).perform();
+```
+
+*Иногда с помощью клавиши **Escape** можно закрыть всплывающие окна*
+
 **[<Содержание>](#содержание)**
 
 ***
 
 ## 1. Authorization
+
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Authorization)**
 
 **Произвести авторизацию на сайте**
 
@@ -129,9 +143,9 @@ driver = new ChromeDriver(options);
 
 **Минимальные зависимости Maven:**
 
-- junit
-- selenium-chrome-driver
-- selenium-support
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
 
 **[<Содержание>](#содержание)**
 
@@ -139,10 +153,13 @@ driver = new ChromeDriver(options);
 
 ## 2. Refactoring
 
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Refactoring)**
+
 **Произвести рефакторинг кода, написать тест для создания сущности**
 
-1. Вынесите некоторый код из **Test-метода** из [1. Authorization] в отдельные **методы** с помощью
-   **"Extract method"**. Теперь **Test-метод** выглядит как **последовательный вызов** только что созданных **методов**.
+1. Вынесите некоторый код из **Test-метода** из **[\[1. Authorization\]](#1-authorization)** в отдельные **методы**
+   с помощью **"Extract method"**. Теперь **Test-метод** выглядит как **последовательный вызов** только что
+   созданных **методов**.
 2. Создайте новый класс **TestBase**, вынесите в него **все** методы из вашего Test-класса, которые **не помечены**
    аннотацией `@Test` *(вынесите методы и написанные только что, и с аннотациями `@Before`, `@After`)*.
 3. Ваш **Test-класс** должен быть наследником класса **TestBase**.
@@ -157,9 +174,9 @@ driver = new ChromeDriver(options);
 
 **Минимальные зависимости Maven:**
 
-- junit
-- selenium-chrome-driver
-- selenium-support
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
 
 **[<Содержание>](#содержание)**
 

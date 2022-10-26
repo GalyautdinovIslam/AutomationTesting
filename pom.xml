@@ -13,6 +13,7 @@
         <module>Before</module>
         <module>Authorization</module>
         <module>Refactoring</module>
+        <module>Manager</module>
     </modules>
 
     <properties>

@@ -5,12 +5,19 @@ import ru.itis.tsvetaev.ApplicationManager;
 import ru.itis.tsvetaev.basic.VkHelperBase;
 import ru.itis.tsvetaev.models.UserData;
 
+
 public class LoginHelper extends VkHelperBase {
 
     public LoginHelper(ApplicationManager applicationManager) {
         super(applicationManager);
     }
 
+    /**
+     * Авторизация на сайте vk.com
+     *
+     * @param user Класс, хранящий в себе данные для авторизации
+     * @throws InterruptedException Если поток выполнения был прерван во время ожидания загрузки окна
+     */
     public void login(UserData user) throws InterruptedException {
         driver.findElement(By.id("index_email")).click();
         driver.findElement(By.id("index_email")).clear();

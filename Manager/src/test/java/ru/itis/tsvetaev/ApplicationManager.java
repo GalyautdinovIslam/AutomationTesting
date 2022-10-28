@@ -37,6 +37,9 @@ public class ApplicationManager {
         postHelper = new PostHelper(this);
     }
 
+    /**
+     * Закрытие WebDriver'а
+     */
     public void stop() {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();

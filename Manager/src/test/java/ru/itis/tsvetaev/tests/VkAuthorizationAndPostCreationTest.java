@@ -10,15 +10,25 @@ import ru.itis.tsvetaev.models.UserData;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VkAuthorizationAndPostCreationTest extends VkTestBase {
     private static final UserData user = new UserData("", "");
-    private static final PostData post = new PostData("Плюс 2 или минус 2?");
+    private static final PostData post = new PostData("testik");
 
+    /**
+     * Тестирование авторизации
+     *
+     * @throws Exception Исключение, вызванное во время выполнения тестирования
+     */
     @Test
     public void authorizationTestCase() throws Exception {
         applicationManager.getNavigationHelper().openVkPage();
         applicationManager.getLoginHelper().login(user);
-        applicationManager.getHelperBase().sleep(10);
+        applicationManager.getHelperBase().sleep(5);
     }
 
+    /**
+     * Тестирование создания поста с процессом авторизации
+     *
+     * @throws Exception Исключение, вызванное во время выполнения тестирования
+     */
     @Test
     public void postCreationTestCase() throws Exception {
         applicationManager.getNavigationHelper().openVkPage();

@@ -11,6 +11,11 @@ public class PostHelper extends VkHelperBase {
         super(applicationManager);
     }
 
+    /**
+     * Создание поста на открытой странице пользователя
+     *
+     * @param post Класс, хранящий в себе информацию для создания поста
+     */
     public void createPost(PostData post) {
         driver.findElement(By.id("post_field")).click();
         driver.findElement(By.id("post_field")).clear();

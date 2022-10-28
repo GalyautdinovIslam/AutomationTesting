@@ -19,9 +19,7 @@ public class VkHelperBase {
     }
 
     protected void sendEscapeKey() {
-        new Actions(applicationManager.getDriver())
-                .sendKeys(Keys.ESCAPE)
-                .perform();
+        new Actions(driver).sendKeys(Keys.ESCAPE).perform();
     }
 
     protected boolean isElementPresent(By by) {
@@ -42,15 +40,12 @@ public class VkHelperBase {
         }
     }
 
-    protected String closeAlertAndGetItsText() {
+    protected String closeAlertAndGetItsText() throws NoAlertPresentException {
         try {
             Alert alert = driver.switchTo().alert();
             String alertText = alert.getText();
-            if (acceptNextAlert) {
-                alert.accept();
-            } else {
-                alert.dismiss();
-            }
+            if (acceptNextAlert) alert.accept();
+            else alert.dismiss();
             return alertText;
         } finally {
             acceptNextAlert = true;

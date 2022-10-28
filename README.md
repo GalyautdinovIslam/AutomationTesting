@@ -14,6 +14,7 @@
 - **Автоматизированное тестирование**
     - **[1. Authorization](#1-authorization)**
     - **[2. Refactoring](#2-refactoring)**
+    - **[3. Manager](#3-manager)**
 
 ***
 
@@ -171,6 +172,36 @@ new Actions(driver).sendKeys(Keys.ESCAPE).perform();
 7. С помощью **Katalon**'а сгенерируйте код для создания сущности и добавьте его в новый **Test-метод**.
 8. Произведите такой же **рефакторинг**, который мы произвели для авторизации, **для нового кода**.
 9. Запустите тесты и убедитесь в их правильной работе.
+
+**Минимальные зависимости Maven:**
+
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
+
+**[<Содержание>](#содержание)**
+
+***
+
+## 3. Manager
+
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Manager)**
+
+**Произвести структурирование ранее написанного кода**
+
+1. Создать класс **NavigationHelper** и перенести туда все методы из **TestBase**, связанные с переходами по страницам.
+2. Создать класс **LoginHelper** и перенести туда все методы из **TestBase**, связанные с авторизацией.
+3. Создать **классы-хелперы** для методов из **TestBase**, взаимодействующих с имеющимися сущностями.
+4. Создать **HelperBase** и перенести туда остальные методы, но не `setUp()` и `tearDown()`. Также данный класс должен иметь ссылку на **WebDriver**.
+5. Сделать ваши **классы-тестеры** наследниками класса **HelperBase**, перенести данные классы в пакет **helpers**.
+6. Создать класс **ApplicationManager**, перенести туда основные поля из **TestBase**, добавить ссылки на только что написанные классы-хелперы.
+7. В конструкторе класса **ApplicationManager** произвести инициализацию (взять код из метода `setUp()` класса **TestBase**).
+8. Добавить на наши **хелперы** в классе **ApplicationManager** **методы-геттеры**.
+9. В **HelperBase** добавить ссылку на **ApplicationManager**.
+10. В **TestBase** добавить ссылку на **ApplicationManager**. Удалить из **TestBase** то, что есть в **ApplicationManager**.
+11. Перенести логику метода `tearDown()` класса **TestBase** в метод `stop()` класса **ApplicationManager**.
+12. Отредактировать наши классы-тесты так, чтобы код компилировался.
+13. Проверить выполнение всех тестов.
 
 **Минимальные зависимости Maven:**
 

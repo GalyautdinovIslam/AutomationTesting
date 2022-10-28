@@ -12,12 +12,22 @@ public class NavigationHelper extends VkHelperBase {
         this.baseUrl = baseUrl;
     }
 
+    /**
+     * Открытие окна vk.com и закрытие всплывающего окна
+     *
+     * @throws InterruptedException Если поток выполнения был прерван во время ожидания загрузки окна
+     */
     public void openVkPage() throws InterruptedException {
         driver.get(baseUrl);
         sleep(3);
         sendEscapeKey();
     }
 
+    /**
+     * Открытие профиля авторизированного пользователя и закрытие всплывающего окна
+     *
+     * @throws InterruptedException Если поток выполнения был прерван во время ожидания загрузки окна
+     */
     public void openProfilePage() throws InterruptedException {
         openVkPage();
         driver.findElement(By.xpath("//li[@id='l_pr']/a")).click();

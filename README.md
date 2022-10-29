@@ -8,14 +8,32 @@
 
 - **До автоматизированного тестирования**
     - **[Before](#before)**
+      - dullrace2
+      - XMind
+      - Тест-кейсы
+      - Классы эквивалентности
+      - ListBoxer
+      - Text Filter (dumb)
 - **Информация**
     - **[Основная информация](#основная-информация)**
+      - Используемые технологии и ресурсы
+      - Ссылки на скачивания нужного
+      - Используемые зависимости maven
     - **[Дополнительная информация](#дополнительная-информация)**
+      - Добавление User-Agent
+      - Изменение Page Load Strategy
+      - Имитирование нажатия клавиши
     - **[Инструкции к автоматизированному тестированию](#инструкции-к-автоматизированному-тестированию)**
+      - Google-диск
+      - Каталог в репозитории
 - **Автоматизированное тестирование**
     - **[1. Authorization](#1-authorization)**
     - **[2. Refactoring](#2-refactoring)**
     - **[3. Manager](#3-manager)**
+    - **[4. Asserts](#4-asserts)**
+    - **[5. Generator](#5-generator)**
+    - **[6. AuthBase](#6-authbase)**
+    - **[7. AutoIt](#7-autoit)**
 
 ***
 
@@ -48,7 +66,7 @@
 
 ## Основная информация
 
-### Используются:
+### Используемые технологии и ресурсы:
 
 - **Java 17**
 - **Maven**
@@ -128,7 +146,7 @@ new Actions(driver).sendKeys(Keys.ESCAPE).perform();
 
 ## Инструкции к автоматизированному тестированию
 
-- **[<Google-диск>](https://drive.google.com/drive/folders/1keo2EM-_E7RpTdC0EgzXgtVyFSA2TmoP)**
+- **[<Google-диск>](https://drive.google.com/drive/folders/1RBJxkVDJpXNHFZC0doDvkb8Niux3mHde?usp=share_link)**
 - **[<Каталог в репозитории>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/resources/instructions)**
 
 **[<Содержание>](#содержание)**
@@ -216,6 +234,78 @@ new Actions(driver).sendKeys(Keys.ESCAPE).perform();
 11. Перенести логику метода `tearDown()` класса **TestBase** в метод `stop()` класса **ApplicationManager**.
 12. Отредактировать наши классы-тесты так, чтобы код компилировался.
 13. Проверить выполнение всех тестов.
+
+**Минимальные зависимости Maven:**
+
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
+
+**[<Содержание>](#содержание)**
+
+***
+
+## 4. Asserts 
+
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Asserts)**
+
+**Summary**
+
+1. 
+
+**Минимальные зависимости Maven:**
+
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
+
+**[<Содержание>](#содержание)**
+
+***
+
+## 5. Generator
+
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/Generator)**
+
+**Summary**
+
+1.
+
+**Минимальные зависимости Maven:**
+
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
+
+**[<Содержание>](#содержание)**
+
+***
+
+## 6. AuthBase
+
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/AuthBase)**
+
+**Summary**
+
+1.
+
+**Минимальные зависимости Maven:**
+
+- [junit](https://mvnrepository.com/artifact/junit/junit)
+- [selenium-chrome-driver](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver)
+- [selenium-support](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support)
+
+**[<Содержание>](#содержание)**
+
+***
+
+## 7. AutoIT
+
+**[<Перейти к каталогу>](https://github.com/GalyautdinovIslam/AutomationTesting/tree/main/AutoIT)**
+
+**Summary**
+
+1.
 
 **Минимальные зависимости Maven:**
 

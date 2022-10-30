@@ -4,3 +4,4 @@
 *.class
 
 resources/vk.data
+**/output/

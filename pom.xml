@@ -15,6 +15,7 @@
         <module>Manager</module>
         <module>Asserts</module>
         <module>Generator</module>
+        <module>AuthBase</module>
     </modules>
 
     <properties>

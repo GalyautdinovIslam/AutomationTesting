@@ -11,7 +11,10 @@ public class VkTestBase {
             "",
             ""
     );
-    protected static final PostData post = new PostData("Здесь был Ислам", null);
+    protected static final PostData post = new PostData(
+            "baby boom, за щекой шипучка",
+            null
+    );
 
     protected ApplicationManager applicationManager;
 

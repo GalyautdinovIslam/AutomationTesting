@@ -14,14 +14,14 @@ public class NavigationHelper extends VkHelperBase {
 
     public void openVkPage() throws InterruptedException {
         driver.get(baseUrl);
-        sleep(3);
+        sleep(SLEEP_DURATION);
         sendEscapeKey();
     }
 
     public void openProfilePage() throws InterruptedException {
         openVkPage();
         driver.findElement(By.xpath("//li[@id='l_pr']/a")).click();
-        sleep(3);
+        sleep(SLEEP_DURATION);
         sendEscapeKey();
     }
 }

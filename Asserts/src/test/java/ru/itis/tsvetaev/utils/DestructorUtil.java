@@ -11,10 +11,6 @@ public final class DestructorUtil {
         return hook;
     }
 
-    public static boolean removeDestructor(Thread hook) {
-        return Runtime.getRuntime().removeShutdownHook(hook);
-    }
-
     public static Thread addManagerDestructor(ApplicationManager applicationManager) {
         return addDestructor(() -> {
             try {

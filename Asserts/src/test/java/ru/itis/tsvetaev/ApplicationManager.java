@@ -35,7 +35,6 @@ public class ApplicationManager {
     private ApplicationManager() {
         System.setProperty(DRIVER_PROPERTY, DRIVER_PATH);
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIMEOUT);
         js = (JavascriptExecutor) driver;
         verificationErrors = new StringBuffer();

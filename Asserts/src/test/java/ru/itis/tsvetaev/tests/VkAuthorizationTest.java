@@ -14,7 +14,5 @@ public class VkAuthorizationTest extends VkTestBase {
 
         Assert.assertTrue(applicationManager.getLoginHelper().isAuthorized());
         Assert.assertEquals(user.path(), applicationManager.getLoginHelper().getAuthorizedUserPath());
-
-        applicationManager.getLoginHelper().logout();
     }
 }

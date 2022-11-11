@@ -17,7 +17,7 @@ public class LoginHelper extends VkHelperBase {
         driver.findElement(By.id("index_email")).sendKeys(user.login());
         driver.findElement(By.xpath("//div[@id='index_login']/div/form/button")).click();
 
-        sleep(3);
+        sleep(SLEEP_DURATION);
 
         driver.findElement(By.name("password")).clear();
         driver.findElement(By.name("password")).sendKeys(user.password());
@@ -25,13 +25,7 @@ public class LoginHelper extends VkHelperBase {
                 "//*[@id='root']/div/div/div/div/div/div/div/div/form/div[2]/button"
         )).click();
 
-        sleep(3);
-    }
-
-    public void logout() throws InterruptedException {
-        driver.findElement(By.id("top_profile_link")).click();
-        driver.findElement(By.xpath("//a[@id='top_logout_link']")).click();
-        sleep(3);
+        sleep(SLEEP_DURATION);
     }
 
     public boolean isAuthorized() {

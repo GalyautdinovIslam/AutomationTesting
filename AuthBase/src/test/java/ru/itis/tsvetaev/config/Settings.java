@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public final class Settings {
-    // TODO: изменить путь
-    public static String file = "C:/Users/galya/Testing/AutomationTesting/AuthBase/src/test/resources/Settings.xml";
+    public static String file = "/C:/Users/galya/OneDrive/Рабочий стол/AuthBase/src/test/resources/Settings.xml";
 
     private static final Properties properties;
     private static String baseUrl;

@@ -1,7 +1,7 @@
 package ru.itis.tsvetaev.generators;
 
-import ru.itis.tsvetaev.models.PostData;
-import ru.itis.tsvetaev.models.jaxb.Posts;
+import ru.itis.tsvetaev.models.Line;
+import ru.itis.tsvetaev.models.jaxb.Lines;
 import ru.itis.tsvetaev.utils.StringUtil;
 
 import javax.xml.bind.JAXBContext;
@@ -14,29 +14,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class Generator {
-    public static final String SOURCE = "/C:/Users/galya/OneDrive/Рабочий стол/Generator/data";
+    public static final String DIRECTORY = "/C:/Users/galya/OneDrive/Рабочий стол/AutoIT/output";
 
     public static void main(String[] args) {
-        System.out.println(SOURCE);
         String type = args[0];
         int count = Integer.parseInt(args[1]);
         String filename = args[2];
         String format = args[3];
-        if (Objects.equals(type, "post")) GenerateForGroups(count, filename, format);
+        if (Objects.equals(type, "line")) GenerateForLines(count, filename, format);
         else throw new IllegalArgumentException("Unrecognized type of data: " + type);
     }
 
-    private static void GenerateForGroups(int count, String filename, String format) {
-        List<PostData> posts = new LinkedList<>();
+    private static void GenerateForLines(int count, String filename, String format) {
+        List<Line> lines = new LinkedList<>();
         for (int i = 0; i < count; i++) {
-            posts.add(new PostData(
-                    StringUtil.getRandomString(5, 18),
-                    null
-            ));
+            lines.add(new Line(StringUtil.getRandomString(5, 18)));
         }
         if (Objects.equals(format, "xml")) {
-            try (FileWriter fileWriter = new FileWriter(SOURCE + "/" + filename + "." + format)) {
-                writePostsToXmlFile(posts, fileWriter);
+            try (FileWriter fileWriter = new FileWriter(DIRECTORY + "/" + filename + "." + format)) {
+                writeLinesToXmlFile(lines, fileWriter);
             } catch (IOException exception) {
                 throw new RuntimeException(exception);
             }
@@ -45,14 +41,14 @@ public class Generator {
         }
     }
 
-    static void writePostsToXmlFile(List<PostData> postDataList, FileWriter fileWriter) {
+    private static void writeLinesToXmlFile(List<Line> lineList, FileWriter fileWriter) {
         try {
-            Posts posts = new Posts();
-            posts.setPosts(postDataList);
-            JAXBContext jaxbContext = JAXBContext.newInstance(Posts.class);
+            Lines lines = new Lines();
+            lines.setLines(lineList);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Lines.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            marshaller.marshal(posts, fileWriter);
+            marshaller.marshal(lines, fileWriter);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }

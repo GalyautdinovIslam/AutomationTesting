@@ -2,10 +2,8 @@ package ru.itis.tsvetaev.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ru.itis.tsvetaev.basic.VkAuthBase;
 import ru.itis.tsvetaev.generators.Generator;
 import ru.itis.tsvetaev.models.PostData;
@@ -16,10 +14,15 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
-@RunWith(Theories.class)
+
+@RunWith(Parameterized.class)
 public class VkPostCreationTest extends VkAuthBase {
 
-    @DataPoints
+    @Parameterized.Parameter
+    public PostData post;
+
+
+    @Parameterized.Parameters(name = "Post")
     public static List<PostData> postsFromXmlFile() {
         try {
             JAXBContext context = JAXBContext.newInstance(Posts.class);
@@ -32,8 +35,7 @@ public class VkPostCreationTest extends VkAuthBase {
     }
 
     @Test
-    @Theory
-    public void postCreationTestCase(PostData post) throws Exception {
+    public void postCreationTestCase() throws Exception {
         applicationManager.getPostHelper().createPost(post);
         applicationManager.getHelperBase().sleep(3);
 

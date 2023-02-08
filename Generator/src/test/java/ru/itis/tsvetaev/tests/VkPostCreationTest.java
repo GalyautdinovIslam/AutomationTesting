@@ -2,10 +2,10 @@ package ru.itis.tsvetaev.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 import ru.itis.tsvetaev.basic.VkTestBase;
 import ru.itis.tsvetaev.generators.Generator;
 import ru.itis.tsvetaev.models.PostData;
@@ -16,15 +16,19 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
-@RunWith(Theories.class)
+
+@RunWith(Parameterized.class)
 public class VkPostCreationTest extends VkTestBase {
 
-    @DataPoints
-    public static List<PostData> postsFromXmlFile() {
+    @Parameter
+    public PostData post;
+
+    @Parameters(name = "Post")
+    public static List<PostData> postCreationTestCaseData() {
         try {
             JAXBContext context = JAXBContext.newInstance(Posts.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            Posts posts = (Posts) unmarshaller.unmarshal(new File(Generator.DIRECTORY + "/posts.xml"));
+            Posts posts = (Posts) unmarshaller.unmarshal(new File(Generator.SOURCE + "/posts.xml"));
             return posts.getPosts();
         } catch (JAXBException exception) {
             throw new RuntimeException(exception);
@@ -33,9 +37,7 @@ public class VkPostCreationTest extends VkTestBase {
     }
 
     @Test
-    @Theory
-    public void postCreationTestCase(PostData post) throws Exception {
-        applicationManager.getLoginHelper().login(user);
+    public void postCreationTestCase() throws Exception {
         applicationManager.getNavigationHelper().openProfilePage();
         applicationManager.getPostHelper().createPost(post);
         applicationManager.getHelperBase().sleep(3);
@@ -43,7 +45,5 @@ public class VkPostCreationTest extends VkTestBase {
         PostData createdPost = applicationManager.getPostHelper().getLastPost();
         Assert.assertEquals(post.content(), createdPost.content());
         Assert.assertTrue(System.currentTimeMillis() / 1000 - createdPost.time() < 10);
-
-        applicationManager.getLoginHelper().logout();
     }
 }

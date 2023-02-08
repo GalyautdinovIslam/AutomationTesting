@@ -15,11 +15,22 @@ public class NavigationHelper extends VkHelperBase {
     public void openVkPage() throws InterruptedException {
         driver.get(baseUrl);
         sleep(3);
+        try {
+            applicationManager.getDriver().switchTo().alert().accept();
+        } catch (Exception ignored) {
+        }
+        sleep(3);
         sendEscapeKey();
     }
 
     public void openProfilePage() throws InterruptedException {
+        openVkPage();
         driver.findElement(By.xpath("//li[@id='l_pr']/a")).click();
+        sleep(3);
+        try {
+            applicationManager.getDriver().switchTo().alert().accept();
+        } catch (Exception ignored) {
+        }
         sleep(3);
         sendEscapeKey();
     }

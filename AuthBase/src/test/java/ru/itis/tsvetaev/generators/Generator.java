@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Generator {
-    public static final String DIRECTORY = "/C:/Users/galya/Testing/AutomationTesting/AuthBase/output";
+    public static final String DIRECTORY = "/C:/Users/galya/OneDrive/Рабочий стол/AuthBase/output";
 
     public static void main(String[] args) {
         String type = args[0];
@@ -33,7 +33,7 @@ public class Generator {
         List<PostData> posts = new LinkedList<>();
         for (int i = 0; i < count; i++) {
             posts.add(new PostData(
-                    StringUtil.getRandomString(3, 10, 5, 18),
+                    StringUtil.getRandomString(5, 18),
                     null
             ));
         }
@@ -65,8 +65,8 @@ public class Generator {
         List<UserData> users = new LinkedList<>();
         for (int i = 0; i < count; i++) {
             users.add(new UserData(
-                    StringUtil.getRandomPhoneNumber(),
-                    StringUtil.getRandomString(1, 1, 8, 32),
+                    Settings.getLogin(),
+                    StringUtil.getRandomString(8, 32),
                     StringUtil.getRandomPath()
             ));
         }
@@ -82,7 +82,8 @@ public class Generator {
     }
 
     private static void writeUsersToXmlFile(List<UserData> userDataList, FileWriter fileWriter) {
-        try {;
+        try {
+            ;
             Users users = new Users();
             users.setUsers(userDataList);
             JAXBContext jaxbContext = JAXBContext.newInstance(Users.class);

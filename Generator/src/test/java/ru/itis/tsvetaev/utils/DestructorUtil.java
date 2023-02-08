@@ -4,15 +4,10 @@ import org.junit.Assert;
 import ru.itis.tsvetaev.ApplicationManager;
 
 public final class DestructorUtil {
-
     public static Thread addDestructor(Runnable runnable) {
         Thread hook = new Thread(runnable);
         Runtime.getRuntime().addShutdownHook(hook);
         return hook;
-    }
-
-    public static boolean removeDestructor(Thread hook) {
-        return Runtime.getRuntime().removeShutdownHook(hook);
     }
 
     public static Thread addManagerDestructor(ApplicationManager applicationManager) {

@@ -2,10 +2,8 @@ package ru.itis.tsvetaev.tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ru.itis.tsvetaev.basic.VkTestBase;
 import ru.itis.tsvetaev.generators.Generator;
 import ru.itis.tsvetaev.models.UserData;
@@ -17,10 +15,13 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
 
-@RunWith(Theories.class)
+@RunWith(Parameterized.class)
 public class VkValidAuthorizationTest extends VkTestBase {
 
-    @DataPoints
+    @Parameterized.Parameter
+    public UserData user;
+
+    @Parameterized.Parameters(name = "User")
     public static List<UserData> usersFromXmlFile() {
         try {
             JAXBContext context = JAXBContext.newInstance(Users.class);
@@ -33,9 +34,7 @@ public class VkValidAuthorizationTest extends VkTestBase {
     }
 
     @Test
-    @Theory
-    public void authorizationTestCase(UserData user) throws Exception {
-        applicationManager.getNavigationHelper().openVkPage();
+    public void authorizationTestCase() throws Exception {
         applicationManager.getLoginHelper().login(user);
         applicationManager.getHelperBase().sleep(3);
 
